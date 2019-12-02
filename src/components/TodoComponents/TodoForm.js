@@ -1,8 +1,8 @@
 import React from 'react';
 
 class TodoForm extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             newTodo: ''
         };
@@ -15,29 +15,28 @@ class TodoForm extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.addTodo(this.state.newTodo);
-        this.setState({
-            newTodo: ''
-        });
+        this.setState({ newTodo: '' });
     };
-    handleClear = e => {
+    
+    handleReset= e => {
         e.preventDefault();
-        this.props.cleared();
-    }
+        this.setState({ newTodo: ''});
+    };
 
     render() {
         console.log('rendering form');
         return (
             <form onSubmit=  {this.handleSubmit}>
-            <input
-                value={this.state.newTodo}
-                onChange={this.handleChanges}
-                type="text"
-                name="item"
-                id="todo"
-                />
-                <button onClick={this.handleSubmit} type='submit'>Add Todo</button>
-                <button onClick={this.handleClear} type='submit'>Clear Completed</button>
+                <input
+                    value={this.state.newTodo}
+                    onChange={this.handleChanges}
+                    type="text"
+                    name="item"
+                    id="todo"
+                    />
+                    <button onClick={this.handleSubmit} type='submit' value='Submit'>Submit Task</button>
+                    <button onClick={this.handleReset} type='reset'
+                    value='Reset'>Clear All</button>
             </form>
         );
     }
