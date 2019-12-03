@@ -4,20 +4,17 @@ import React from 'react';
 import Todo from './Todo';
 
 const TodoList = props => {
+
     return (
         <div className='todo-list'>
-            {props.items.map(todo => (
+            {props.items.map(item => (
                 <Todo 
-                    key={todo.id} 
-                    todo={todo} />
+                    key={item.id} 
+                    item={item}
+                    toggleItem={props.toggleItem} />
             ))}
-            {/* <button onClick={props.appendInput}>Clear Completed</button> */}
+            {/* <button className="clear-btn" onClick={props.clearCompleted}>Clear Completed</button> */}
         </div>
     );
-}
-    // appendInput() {
-    //     var newInput = `input-${this.state.inputs.length}`;
-    //     this.setState(prevState => ({ inputs: prevState.inputs.concat([newInput])}))
-    // }
-
+};
 export default TodoList;

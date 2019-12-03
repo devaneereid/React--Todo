@@ -33,33 +33,32 @@ class App extends React.Component {
     };
   }
 
-  addTask = task => {
+  addTask = newItemTask => {
     const newTask = {
-      task: task,
+      task: newItemTask,
       id: Date.now(),
-      purchased: false
+      completed: false
     };
     this.setState({
       items: [...this.state.items, newTask]
     });
   }
 
-  // toggleComplete = id => {
-  //   this.setState({
-  //     items: [this.state.items.map(item => {
-  //       if (item.id === id) {
-  //         return {
-  //           ...item,
-  //           purchased: !item.purchased
-  //         }
-  //       } else {
-  //         return item;
-  //       }
-  //     }),
-  //   })
-  // }
+  toggleItem = itemId => {
+    this.setState({
+      items: this.state.items.map(item => {
+        if (item.id === itemId) {
+          return {
+            ...item,
+            completed: !item.completed
+          };
+        } else {
+          return item;
+        }
+      })
+    })
+  }
   
-
   render() {
     console.log('rendering...');
     return (
@@ -70,7 +69,8 @@ class App extends React.Component {
               addTask={this.addTask} toggleComplete={this.toggleComplete}/>
               </div>
             <TodoList 
-          items={this.state.items} toggleComplete={this.toggleComplete}/>
+              toggleItem={this.toggleItem}
+              items={this.state.items}/>
       </div>
     );
   }

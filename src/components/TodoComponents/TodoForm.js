@@ -13,9 +13,11 @@ class TodoForm extends React.Component {
             newTodo: e.target.value });
     };
 
+
     handleSubmit = e => {
         e.preventDefault();
         console.log('Submitted!');
+        this.props.addTask(this.state.newTodo);
         this.setState({ newTodo: '' });
     };
     
@@ -33,13 +35,14 @@ class TodoForm extends React.Component {
                     onChange={this.handleChanges}
                     type="text"
                     name="item"
-                    id="todo"
+                    // id="todo"
                     />
-                    <button onClick={this.handleSubmit} type='submit' value='Submit'>Submit Task</button>
+                    <button>Submit Task</button>
                     <button onClick={this.handleReset} type='reset'
                     value='Reset'>Clear All</button>
             </form>
         );
     }
 }
+
 export default TodoForm;
