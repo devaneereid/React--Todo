@@ -11,8 +11,13 @@ const TodoList = props => {
                     key={todo.id} 
                     todo={todo} />
             ))}
-            {/* <button className="clear" onClick={props.clearCompleted}>Clear Completed</button> */}
+            {/* <button onClick={props.appendInput}>Clear Completed</button> */}
         </div>
     );
-};
+}
+    // appendInput() {
+    //     var newInput = `input-${this.state.inputs.length}`;
+    //     this.setState(prevState => ({ inputs: prevState.inputs.concat([newInput])}))
+    // }
+
 export default TodoList;

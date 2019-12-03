@@ -40,10 +40,25 @@ class App extends React.Component {
       purchased: false
     };
     this.setState({
-      list: [...this.state.list, newTask]
+      items: [...this.state.items, newTask]
     });
   }
 
+  // toggleComplete = id => {
+  //   this.setState({
+  //     items: [this.state.items.map(item => {
+  //       if (item.id === id) {
+  //         return {
+  //           ...item,
+  //           purchased: !item.purchased
+  //         }
+  //       } else {
+  //         return item;
+  //       }
+  //     }),
+  //   })
+  // }
+  
 
   render() {
     console.log('rendering...');
@@ -52,10 +67,10 @@ class App extends React.Component {
         <div className="header">
           <h2>Welcome to your Todo App!</h2>
             <TodoForm 
-              addTask={this.addTask}/>
-          </div>
-        <TodoList 
-          items={this.state.items} />
+              addTask={this.addTask} toggleComplete={this.toggleComplete}/>
+              </div>
+            <TodoList 
+          items={this.state.items} toggleComplete={this.toggleComplete}/>
       </div>
     );
   }

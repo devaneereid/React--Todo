@@ -2,8 +2,8 @@ import React from 'react';
 
 const Todo = props => {
     return (
-        <div className={`todo${props.todo.finished ? ' finished' : ''}`}
-        onClick={() => props.filter(props.todo.id)}>
+        <div className={`todo${props.todo.completed ? ' completed' : ''}`}
+        onClick={() => props.items.map(props.todo.id)}>
             <p>{props.todo.task}</p>
         </div>
     );
