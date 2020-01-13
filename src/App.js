@@ -1,9 +1,11 @@
 import React from 'react';
-// import ReactDom from 'react-dom';
+import ReactDom from 'react-dom';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
+import './components/TodoComponents/Todo';
+import './components/TodoComponents/Todo.css';
 
-const items = [
+const chores = [
     {
       task: 'Organize Garage',
       id: 1528817077286,
@@ -18,6 +20,11 @@ const items = [
       task: 'Mow Lawn',
       id: 1528817084359,
       completed: false
+    }, 
+    {
+      task: 'Remove Trash',
+      id: 1528817084360,
+      completed: false
     }
   ];
 
@@ -28,7 +35,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: items,
+      items: chores,
       task: ''
     };
   }
@@ -44,10 +51,10 @@ class App extends React.Component {
     });
   }
 
-  toggleItem = itemId => {
+  toggleItem = id => {
     this.setState({
       items: this.state.items.map(item => {
-        if (item.id === itemId) {
+        if (item.id === id) {
           return {
             ...item,
             completed: !item.completed
@@ -58,6 +65,12 @@ class App extends React.Component {
       })
     })
   }
+
+  clearCompleted = () => {
+    this.setState({
+      list: this.state.items.filter(item => !item.completed)
+    });
+  }
   
   render() {
     console.log('rendering...');
@@ -66,10 +79,12 @@ class App extends React.Component {
         <div className="header">
           <h2>Welcome to your Todo App!</h2>
             <TodoForm 
-              addTask={this.addTask} toggleComplete={this.toggleComplete}/>
+              addTask={this.addTask} 
+              />
               </div>
             <TodoList 
               toggleItem={this.toggleItem}
+              clearCompleted={this.clearCompleted}
               items={this.state.items}/>
       </div>
     );
@@ -78,5 +93,5 @@ class App extends React.Component {
 export default App;
 
 
-// const rootElement = document.getElementById('root');
-// ReactDom.render(<App />, rootElement);
+const rootElement = document.getElementById('root');
+ReactDom.render(<App />, rootElement);

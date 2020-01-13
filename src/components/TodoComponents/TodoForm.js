@@ -38,8 +38,8 @@ class TodoForm extends React.Component {
                     // id="todo"
                     />
                     <button>Submit Task</button>
-                    <button onClick={this.handleReset} type='reset'
-                    value='Reset'>Clear All</button>
+                    {/* <button onClick={this.handleReset} type='reset'
+                    value='Reset'>Clear All</button> */}
             </form>
         );
     }
