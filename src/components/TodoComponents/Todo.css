@@ -1,3 +1,6 @@
-.item.completed {
+.item.completed > :first-child {
     text-decoration: line-through;
+}
+.item.completed {
+    text-decoration: none !important;
 }

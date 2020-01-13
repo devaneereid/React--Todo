@@ -70,7 +70,9 @@ class App extends React.Component {
     this.setState({
       list: this.state.items.filter(item => !item.completed)
     });
-  }
+  };
+
+  
   
   render() {
     console.log('rendering...');
@@ -79,8 +81,7 @@ class App extends React.Component {
         <div className="header">
           <h2>Welcome to your Todo App!</h2>
             <TodoForm 
-              addTask={this.addTask} 
-              />
+              addTask={this.addTask} />
               </div>
             <TodoList 
               toggleItem={this.toggleItem}
